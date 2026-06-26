@@ -8,6 +8,9 @@ from fastapi import APIRouter
 
 from app.routers.health import router as health_router
 from app.routers.iss import router as iss_router
+from app.routers.planets import router as planets_router
+from app.routers.satellites import router as satellites_router
+from app.routers.weather import router as weather_router
 
 
 api_router = APIRouter(prefix="/api/v1")
@@ -17,3 +20,8 @@ api_router.include_router(health_router)
 
 # ISS endpoints expose live International Space Station telemetry.
 api_router.include_router(iss_router)
+
+# Observation data endpoints feed future astronomy calculations.
+api_router.include_router(weather_router)
+api_router.include_router(satellites_router)
+api_router.include_router(planets_router)
